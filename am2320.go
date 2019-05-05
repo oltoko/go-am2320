@@ -36,7 +36,7 @@ const (
 // AM2320 represents the sensor. In most cases you should initialize it with
 // the DefaultI2CAddr as address.
 type AM2320 struct {
-	address int
+	Address int
 }
 
 // SensorValues contains the results of reading the current Temperature and Humidity
