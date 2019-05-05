@@ -33,10 +33,15 @@ const (
 	i2CSlave       = 0x0703
 )
 
-// AM2320 represents the sensor. In most cases you should initialize it with
-// the DefaultI2CAddr as address.
-type AM2320 struct {
-	Address int
+// Sensor which represents the I²C Device.
+type Sensor struct {
+	address int
+}
+
+// Create the sensor which read Temperature and Humidity from the given I²C Device.
+// In most cases you should use DefaultI2CAddr as address.
+func Create(addr int) Sensor {
+	return Sensor{address: addr}
 }
 
 // SensorValues contains the results of reading the current Temperature and Humidity
@@ -49,7 +54,7 @@ type SensorValues struct {
 }
 
 // Read is used to read the actual Temperature and Humidity from the AM2320 Sensor
-func (am2320 AM2320) Read() (*SensorValues, error) {
+func (sensor Sensor) Read() (*SensorValues, error) {
 
 	f, err := os.OpenFile("/dev/i2c-1", syscall.O_RDWR, 0666)
 	if err != nil {
@@ -57,7 +62,7 @@ func (am2320 AM2320) Read() (*SensorValues, error) {
 	}
 	defer f.Close()
 
-	unix.IoctlSetInt(int(f.Fd()), i2CSlave, am2320.Address)
+	unix.IoctlSetInt(int(f.Fd()), i2CSlave, sensor.address)
 
 	// wake AM2320 up, goes to sleep to not warm up and affect the humidity sensor
 	// This write will fail as AM2320 won't ACK this write
