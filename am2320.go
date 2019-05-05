@@ -57,7 +57,7 @@ func (am2320 AM2320) Read() (*SensorValues, error) {
 	}
 	defer f.Close()
 
-	unix.IoctlSetInt(int(f.Fd()), i2CSlave, am2320.address)
+	unix.IoctlSetInt(int(f.Fd()), i2CSlave, am2320.Address)
 
 	// wake AM2320 up, goes to sleep to not warm up and affect the humidity sensor
 	// This write will fail as AM2320 won't ACK this write
