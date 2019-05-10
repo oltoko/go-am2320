@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/oltoko/go-am2320.svg?branch=master)](https://travis-ci.org/oltoko/go-am2320) [![GoDoc](https://godoc.org/github.com/oltoko/go-am2320?status.svg)](https://godoc.org/github.com/oltoko/go-am2320)
+[![Build Status](https://travis-ci.org/oltoko/go-am2320.svg?branch=master)](https://travis-ci.org/oltoko/go-am2320) [![Go Report Card](https://goreportcard.com/badge/github.com/oltoko/go-am2320)](https://goreportcard.com/report/github.com/oltoko/go-am2320) [![GoDoc](https://godoc.org/github.com/oltoko/go-am2320?status.svg)](https://godoc.org/github.com/oltoko/go-am2320)
 
 # go-am2320
 Code to access an AM2320 via i2c on Raspberry Pi. Also see [Datasheet](https://akizukidenshi.com/download/ds/aosong/AM2320.pdf).
